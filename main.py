@@ -26,7 +26,7 @@ game_is_on = True
 while game_is_on:
     for i in snake_parts:
 
-        i.forward(10)
+        i.forward(10) #
 
     time.sleep(0.1)
     screen.update()

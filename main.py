@@ -1,6 +1,9 @@
 import turtle as t
 import time
 from snake import Snake
+from food import Food
+from scoreboard import Scoreboard
+
 
 screen = t.Screen()
 screen.setup(height=600, width=600)
@@ -9,6 +12,7 @@ screen.title("Snake game by Luisgap")
 screen.tracer(0)
 
 snake = Snake()
+food = Food()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -23,6 +27,22 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+    points = 0
+    scoreboard = Scoreboard()
+
     snake.move()
+
+    # Detect collision with the food:
+
+    if snake.head.distance(food) < 15:
+        food.refresh()
+        scoreboard.clear()
+        scoreboard.refresh_screen()
+
+
+
+
+
+
 
 screen.exitonclick()

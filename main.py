@@ -29,17 +29,29 @@ while game_is_on:
 
     snake.move()
 
-    # Detect collision with the food:
+    # Detect collisions with the food:
 
     if snake.head.distance(food) < 15:
         food.refresh()
         scoreboard.add_score()
+        snake.extend()
 
-    # Detect collision with wall:
+    # Detect collisions with wall:
 
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         game_is_on = False
         scoreboard.game_over()
+
+    # Detect collisions with tail:
+    # If head collides with any segment in the tail trigger game over sequence:
+
+    for i in range(len(snake.snake_parts)-1, 0, -1):
+        print(f"Snake's head position: {snake.head.position()}")
+        print(f"Snake body part {i} position: {snake.snake_parts[i].position()}")
+        if snake.head.position() == snake.snake_parts[i].position():
+            game_is_on = False
+            scoreboard.game_over()
+
 
 
 screen.exitonclick()

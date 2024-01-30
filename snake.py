@@ -10,7 +10,7 @@ class Snake:
 
     # Snake body creation:
     def __init__(self):
-        self.size_of_body = 3
+        self.size_of_body = 8
         self.snake_parts = []
         self.create_snake()
         self.head = self.snake_parts[0]
@@ -23,6 +23,7 @@ class Snake:
             new_part.penup()
             new_part.goto(x=-20 * i, y=0)
             self.snake_parts.append(new_part)
+
     def extend(self):
         new_part = t.Turtle("square")
         new_part.color("white")

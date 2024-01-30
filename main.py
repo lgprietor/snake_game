@@ -45,10 +45,32 @@ while game_is_on:
     # Detect collisions with tail:
     # If head collides with any segment in the tail trigger game over sequence:
 
+    print(f"Snake's head position: {snake.head.position()}")
+
     for i in range(len(snake.snake_parts)-1, 0, -1):
-        print(f"Snake's head position: {snake.head.position()}")
-        print(f"Snake body part {i} position: {snake.snake_parts[i].position()}")
-        if snake.head.position() == snake.snake_parts[i].position():
+
+        print(f"Snake body part {i+1} position: {snake.snake_parts[i].position()}")
+        print(snake.snake_parts[i].position() == snake.snake_parts[0])
+
+        if snake.head.xcor() == -0:
+            snake.head.setx(0)
+            print(snake.head.position())
+
+        if snake.head.ycor() == -0:
+            snake.head.sety(0)
+            print(snake.head.position())
+
+        # print(snake.snake_parts[i].xcor())
+        # print(snake.head.xcor())
+        # print(snake.snake_parts[i].ycor())
+        # print(snake.head.ycor())
+
+        if (round(snake.snake_parts[i].xcor()) == round(snake.head.xcor()) and round(snake.snake_parts[i].ycor())
+                == round(snake.head.ycor())):
+            print(snake.snake_parts[i].xcor())
+            print(snake.head.xcor())
+            print(snake.snake_parts[i].ycor())
+            print(snake.head.ycor())
             game_is_on = False
             scoreboard.game_over()
 

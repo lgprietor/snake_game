@@ -23,6 +23,12 @@ class Snake:
             new_part.penup()
             new_part.goto(x=-20 * i, y=0)
             self.snake_parts.append(new_part)
+    def extend(self):
+        new_part = t.Turtle("square")
+        new_part.color("white")
+        new_part.penup()
+        new_part.goto(self.snake_parts[-1].position())
+        self.snake_parts.append(new_part)
 
     def move(self):
 
